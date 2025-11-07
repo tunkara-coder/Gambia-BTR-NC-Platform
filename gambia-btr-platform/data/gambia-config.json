@@ -1,0 +1,56 @@
+{
+  "country": "The Gambia",
+  "reportingPeriod": "2024",
+  "ndc": {
+    "baseYear": 2020,
+    "baseEmissions": 3542,
+    "target2025": {
+      "reduction": 1796,
+      "percentage": 50.7
+    },
+    "target2030": {
+      "reduction": 3745,
+      "percentage": 105.7
+    },
+    "netZeroTarget": 2050
+  },
+  "keySectors": [
+    {
+      "name": "AFOLU",
+      "code": "Agriculture, Forestry and Other Land Use",
+      "contribution": "Primary"
+    },
+    {
+      "name": "Energy",
+      "code": "Energy",
+      "contribution": "Significant"
+    },
+    {
+      "name": "Waste",
+      "code": "Waste",
+      "contribution": "Moderate"
+    },
+    {
+      "name": "IPUU",
+      "code": "Industrial Processes and Product Use",
+      "contribution": "Minor"
+    }
+  ],
+  "institutionalFramework": {
+    "leadAgency": "MECCNAR - Climate Change Secretariat",
+    "keyPartners": [
+      "Ministry of Agriculture",
+      "Ministry of Energy",
+      "Ministry of Finance",
+      "National Environment Agency",
+      "NAWEC",
+      "University of The Gambia"
+    ]
+  },
+  "projectDetails": {
+    "fundingAgency": "UNEP",
+    "projectCode": "BTR1/NC4",
+    "timeline": "12 months",
+    "technicalManager": "Technical Project Manager - BTR1/NC4 Implementation"
+  }
+}

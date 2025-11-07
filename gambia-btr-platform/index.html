@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gambia BTR/NC Digital Transparency Platform</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-placeholder">GM</div>
+                <div class="logo-text">
+                    <h1>The Gambia BTR/NC Platform</h1>
+                    <p>Ministry of Environment, Climate Change and Natural Resources</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('dashboard')" class="nav-link">Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('btr-process')" class="nav-link">BTR Process</a></li>
+                    <li><a href="#" onclick="showSection('data')" class="nav-link">Data Repository</a></li>
+                    <li><a href="#" onclick="showSection('reports')" class="nav-link">Reports</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="section-header">
+                <h2>TPM Dashboard</h2>
+                <p>Welcome to The Gambia's BTR1/NC4 Management Platform</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>📊 Project Timeline</h3>
+                    <div class="gantt-placeholder">
+                        <p>BTR Submission Deadline: <strong>Dec 31, 2024</strong></p>
+                        <div class="timeline-bar">
+                            <div class="timeline-progress" style="width: 30%"></div>
+                        </div>
+                        <p class="timeline-text">Project Progress: 30%</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🚀 Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="showSection('btr-process')">Start BTR Process</button>
+                        <button class="btn-secondary" onclick="generateProgressReport()">Generate Progress Report</button>
+                        <button class="btn-secondary" onclick="showSection('data')">Manage Sector Data</button>
+                        <button class="btn-secondary" onclick="showSection('reports')">Generate BTR Report</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>📋 Recent Activities</h3>
+                    <ul id="recent-activities" class="activity-list">
+                        <li>Welcome to the BTR Platform</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🎯 Key Deliverables</h3>
+                    <ul class="deliverables-list">
+                        <li>✅ BTR1 Roadmap Completed</li>
+                        <li>📝 NC4 Draft in Progress</li>
+                        <li>🔍 Gap Analysis Pending</li>
+                        <li>📊 GHG Inventory Started</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- BTR Process Navigator -->
+        <section id="btr-process" class="section">
+            <div class="section-header">
+                <h2>BTR Process Navigator</h2>
+                <p>Complete all 6 steps to generate your BTR roadmap</p>
+            </div>
+            
+            <div class="process-container">
+                <div class="step-indicator">
+                    <div class="step active" data-step="1">1</div>
+                    <div class="step" data-step="2">2</div>
+                    <div class="step" data-step="3">3</div>
+                    <div class="step" data-step="4">4</div>
+                    <div class="step" data-step="5">5</div>
+                    <div class="step" data-step="6">6</div>
+                </div>
+                
+                <div class="step-content">
+                    <!-- Step 1: Scene Setting -->
+                    <div class="step-panel active" id="step-1">
+                        <h3>Step 1: Scene Setting</h3>
+                        <p>Establish institutional arrangements and secure political buy-in</p>
+                        
+                        <form class="step-form">
+                            <div class="form-group">
+                                <label for="team-lead">BTR Coordination Team Lead *</label>
+                                <input type="text" id="team-lead" placeholder="Enter team lead name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="team-members">Core Team Members</label>
+                                <textarea id="team-members" placeholder="List core team members and their institutions"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="institutional-arrangements">Institutional Arrangements *</label>
+                                <textarea id="institutional-arrangements" placeholder="Describe existing structures, policies, and coordination mechanisms for climate reporting" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="approval-process">Approval Process</label>
+                                <select id="approval-process">
+                                    <option value="">Select approval process</option>
+                                    <option value="ministerial">Ministerial Level</option>
+                                    <option value="inter-ministerial">Inter-Ministerial Committee</option>
+                                    <option value="cabinet">Cabinet Level</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="saveStep(1)">Save Step</button>
+                                <button type="button" class="btn-primary" onclick="nextStep(1)">Next Step →</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Taking Stock -->
+                    <div class="step-panel" id="step-2">
+                        <h3>Step 2: Taking Stock</h3>
+                        <p>Conduct gap analysis of existing structures, capacities, and information</p>
+                        
+                        <form class="step-form">
+                            <div class="form-group">
+                                <label for="ghg-experience">GHG Inventory Experience *</label>
+                                <select id="ghg-experience" required>
+                                    <option value="">Select experience level</option>
+                                    <option value="none">No previous experience</option>
+                                    <option value="basic">Basic experience (1-2 inventories)</option>
+                                    <option value="moderate">Moderate experience (3+ inventories)</option>
+                                    <option value="extensive">Extensive experience</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Data Availability by Sector</label>
+                                <div class="sector-assessment">
+                                    <div class="sector-item">
+                                        <span>AFOLU (Agriculture, Forestry & Land Use)</span>
+                                        <select id="data-afolu">
+                                            <option value="poor">Poor (0-33%)</option>
+                                            <option value="partial">Partial (34-66%)</option>
+                                            <option value="good">Good (67-100%)</option>
+                                        </select>
+                                    </div>
+                                    <div class="sector-item">
+                                        <span>Energy</span>
+                                        <select id="data-energy">
+                                            <option value="poor">Poor (0-33%)</option>
+                                            <option value="partial">Partial (34-66%)</option>
+                                            <option value="good">Good (67-100%)</option>
+                                        </select>
+                                    </div>
+                                    <div class="sector-item">
+                                        <span>Waste</span>
+                                        <select id="data-waste">
+                                            <option value="poor">Poor (0-33%)</option>
+                                            <option value="partial">Partial (34-66%)</option>
+                                            <option value="good">Good (67-100%)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ndc-tracking">NDC Progress Tracking System</label>
+                                <select id="ndc-tracking">
+                                    <option value="none">No tracking system</option>
+                                    <option value="basic">Basic tracking (manual)</option>
+                                    <option value="developed">Developed system</option>
+                                    <option value="advanced">Advanced digital system</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="prevStep(2)">← Previous</button>
+                                <button type="button" class="btn-secondary" onclick="saveStep(2)">Save Step</button>
+                                <button type="button" class="btn-primary" onclick="nextStep(2)">Next Step →</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 3: Planning -->
+                    <div class="step-panel" id="step-3">
+                        <h3>Step 3: Planning</h3>
+                        <p>Assess human resources and identify capacity-building needs</p>
+                        
+                        <form class="step-form">
+                            <div class="form-group">
+                                <label for="team-size">Core Team Size</label>
+                                <input type="number" id="team-size" placeholder="Number of core team members" min="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Capacity Building Needs</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="capacity-needs" value="ghg"> GHG Inventory Development</label>
+                                    <label><input type="checkbox" name="capacity-needs" value="modeling"> Climate Modeling</label>
+                                    <label><input type="checkbox" name="capacity-needs" value="mrv"> MRV Systems</label>
+                                    <label><input type="checkbox" name="capacity-needs" value="data"> Data Management</label>
+                                    <label><input type="checkbox" name="capacity-needs" value="reporting"> UNFCCC Reporting</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timeline-months">Estimated Timeline (Months)</label>
+                                <input type="number" id="timeline-months" placeholder="e.g., 12" min="1" max="24">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="prevStep(3)">← Previous</button>
+                                <button type="button" class="btn-secondary" onclick="saveStep(3)">Save Step</button>
+                                <button type="button" class="btn-primary" onclick="nextStep(3)">Next Step →</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 4: Implementation -->
+                    <div class="step-panel" id="step-4">
+                        <h3>Step 4: Implementation</h3>
+                        <p>Plan compilation of BTR and obtain official approval</p>
+                        
+                        <form class="step-form">
+                            <div class="form-group">
+                                <label for="compilation-start">Planned Compilation Start Date</label>
+                                <input type="date" id="compilation-start">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="draft-submission">Draft Submission Date</label>
+                                <input type="date" id="draft-submission">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="final-approval">Final Approval Date</label>
+                                <input type="date" id="final-approval">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="implementation-challenges">Anticipated Challenges</label>
+                                <textarea id="implementation-challenges" placeholder="Describe any challenges you anticipate during implementation"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="prevStep(4)">← Previous</button>
+                                <button type="button" class="btn-secondary" onclick="saveStep(4)">Save Step</button>
+                                <button type="button" class="btn-primary" onclick="nextStep(4)">Next Step →</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 5: TER Preparation -->
+                    <div class="step-panel" id="step-5">
+                        <h3>Step 5: TER Preparation</h3>
+                        <p>Prepare for the Technical Expert Review process</p>
+                        
+                        <form class="step-form">
+                            <div class="form-group">
+                                <label for="ter-readiness">TER Readiness Assessment</label>
+                                <select id="ter-readiness">
+                                    <option value="not-ready">Not Ready</option>
+                                    <option value="partially-ready">Partially Ready</option>
+                                    <option value="mostly-ready">Mostly Ready</option>
+                                    <option value="fully-ready">Fully Ready</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="documentation-prep">Documentation Preparation Status</label>
+                                <select id="documentation-prep">
+                                    <option value="not-started">Not Started</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expert-support">Expert Support Needed</label>
+                                <textarea id="expert-support" placeholder="Describe any expert support needed for TER"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="prevStep(5)">← Previous</button>
+                                <button type="button" class="btn-secondary" onclick="saveStep(5)">Save Step</button>
+                                <button type="button" class="btn-primary" onclick="nextStep(5)">Next Step →</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 6: Continuous Improvement -->
+                    <div class="step-panel" id="step-6">
+                        <h3>Step 6: Continuous Improvement</h3>
+                        <p>Plan for improvement over time and future reporting cycles</p>
+                        
+                        <form class="step-form">
+                            <div class="form-group">
+                                <label for="improvement-areas">Key Improvement Areas</label>
+                                <textarea id="improvement-areas" placeholder="Identify areas for improvement in future reporting cycles"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="future-planning">Future Planning Strategy</label>
+                                <textarea id="future-planning" placeholder="Describe your strategy for future BTR preparations"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="knowledge-transfer">Knowledge Transfer Plan</label>
+                                <textarea id="knowledge-transfer" placeholder="Plan for transferring knowledge to new team members"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="prevStep(6)">← Previous</button>
+                                <button type="button" class="btn-secondary" onclick="saveStep(6)">Save Step</button>
+                                <button type="button" class="btn-primary" onclick="generateRoadmap()">Generate Roadmap</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Repository Section -->
+        <section id="data" class="section">
+            <div class="section-header">
+                <h2>Data Repository</h2>
+                <p>Manage sectoral data for GHG inventory and NDC tracking</p>
+            </div>
+            
+            <div class="data-grid">
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <h3>🌿 AFOLU</h3>
+                        <span class="sector-badge">Primary Sector</span>
+                    </div>
+                    <form class="sector-form">
+                        <div class="form-group">
+                            <label for="land-area">Total Land Area (hectares)</label>
+                            <input type="number" id="land-area" placeholder="Enter land area">
+                        </div>
+                        <div class="form-group">
+                            <label for="forest-cover">Forest Cover (hectares)</label>
+                            <input type="number" id="forest-cover" placeholder="Enter forest cover">
+                        </div>
+                        <div class="form-group">
+                            <label for="livestock">Livestock Population</label>
+                            <input type="number" id="livestock" placeholder="Enter livestock count">
+                        </div>
+                        <button type="button" class="btn-primary" onclick="saveSectorData('afolu')">Save AFOLU Data</button>
+                    </form>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <h3>⚡ Energy</h3>
+                        <span class="sector-badge">Key Sector</span>
+                    </div>
+                    <form class="sector-form">
+                        <div class="form-group">
+                            <label for="fuel-consumption">Fuel Consumption (tons)</label>
+                            <input type="number" id="fuel-consumption" placeholder="Enter fuel consumption">
+                        </div>
+                        <div class="form-group">
+                            <label for="renewable-capacity">Renewable Energy Capacity (MW)</label>
+                            <input type="number" id="renewable-capacity" placeholder="Enter capacity">
+                        </div>
+                        <button type="button" class="btn-primary" onclick="saveSectorData('energy')">Save Energy Data</button>
+                    </form>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <h3>🗑️ Waste</h3>
+                        <span class="sector-badge">Important Sector</span>
+                    </div>
+                    <form class="sector-form">
+                        <div class="form-group">
+                            <label for="waste-generated">Waste Generated (tons/year)</label>
+                            <input type="number" id="waste-generated" placeholder="Enter waste amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="recycling-rate">Recycling Rate (%)</label>
+                            <input type="number" id="recycling-rate" placeholder="Enter recycling rate" min="0" max="100">
+                        </div>
+                        <button type="button" class="btn-primary" onclick="saveSectorData('waste')">Save Waste Data</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section id="reports" class="section">
+            <div class="section-header">
+                <h2>Report Generator</h2>
+                <p>Generate BTR reports and export data</p>
+            </div>
+            
+            <div class="reports-container">
+                <div class="report-options">
+                    <button class="btn-primary" onclick="generateBTRReport()">Generate BTR Draft Report</button>
+                    <button class="btn-secondary" onclick="generateProgressReport()">Generate Progress Report</button>
+                    <button class="btn-secondary" onclick="exportToExcel()">Export to Excel Template</button>
+                    <button class="btn-secondary" onclick="generateRoadmap()">Generate Implementation Roadmap</button>
+                </div>
+                
+                <div class="report-output">
+                    <div id="report-content">
+                        <p class="placeholder-text">Select a report type to generate content...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Ministry of Environment, Climate Change and Natural Resources (MECCNAR) - Climate Change Secretariat</p>
+            <p>BTR1/NC4 Implementation Project - Supported by UNEP</p>
+        </div>
+    </footer>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
